@@ -4,8 +4,10 @@ const hbs = require('hbs')
 require('./db/mongoose')
 const User = require('./models/user')
 const ContactForm = require('./models/contactForm')
+const iProfile = require('./models/interpreterProfile')
 const userRouter = require('./routers/user')
 const contactRouter = require('./routers/contactForm')
+const iProfileRouter = require('./routers/interpreterProfile')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,6 +15,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(userRouter)
 app.use(contactRouter)
+app.use(iProfileRouter)
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')

@@ -30,6 +30,9 @@ router.get('/users', async (req, res)=>{
 
         //change this to use different search criteria
         const users = await User.find({ isInterpreter: true})
+
+        //gotta let users down more easily when no matches are found
+
         res.send(users)
     }catch(e){
         res.status(500).send()
@@ -39,7 +42,7 @@ router.get('/users', async (req, res)=>{
 // user can update their own profiles
 router.patch('/users/:id',  async (req, res) =>{
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name', 'email', 'password', 'age']
+    const allowedUpdates = ['name', 'email', 'username', 'password', 'gender']
     const isValidOperation = updates.every((update)=> allowedUpdates.includes(update))
 
     if(!isValidOperation){
