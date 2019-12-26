@@ -26,6 +26,12 @@ const iProfile = new mongoose.Schema({
     // certification
     certification: {
         type: Array
+    },
+    //which interpreter's profile this is
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 })
 
