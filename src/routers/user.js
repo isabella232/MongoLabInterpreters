@@ -1,10 +1,14 @@
 const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const bodyParser = require('body-parser')
 const router = new express.Router()
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // creating a user
-router.post('/signup', async (req, res)=>{
+router.post('/signup', urlencodedParser, async (req, res)=>{
+    //console.log('signup post is used')
     const user = new User(req.body)
 
     try{
@@ -12,16 +16,19 @@ router.post('/signup', async (req, res)=>{
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token })
     } catch(e){
-        res.status(400).send(e)
+        res.status(400).send()
     }
 })
 
 // getting users by their credentials
-router.post('/login', async (req, res) =>{
+router.post('/login', urlencodedParser, async (req, res) =>{
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        //res.send({ user, token })
+        res.render('profile', {
+            title: 'Make a Profile'
+        })
     } catch (e){
         res.status(400).send()
     }
