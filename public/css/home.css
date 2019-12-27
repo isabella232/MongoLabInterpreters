@@ -56,6 +56,16 @@ h3 {
   text-align: center;
 }
 
+button {
+  padding: 3px 10px;
+  border-radius: 5px;
+  background-color: #DDD;
+}
+
+button:hover {
+  background-color: #CCC;
+}
+
 .rectangle {
   width: 90%;
   height: 500px;
@@ -125,8 +135,6 @@ h3 {
   color: #f44336;
   cursor: pointer;
 }
-
-/* Fix with Bootstrap */
 
 .qualifications {
   width: 150px;

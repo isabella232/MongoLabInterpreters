@@ -27,14 +27,17 @@
         <input class="placeholder-box" type="text" placeholder="Enter Username" required>
         
         <p>Password</p>
-        <input class="placeholder-box" type="password" placeholder="Enter Password" required>
-        
-        <button type="submit">Login</button>
-        <input type="checkbox"> Remember me
+        <input class="placeholder-box section-margin" type="password" placeholder="Enter Password" required>
 
-        
+        <div class="fluid-container section-margin">
+          <button type="submit">Login</button>
+          <input type="checkbox"> Remember me
+        </div>
+
         <!-- Button to open the modal -->
-        <button class="sign-up" onclick="openModal()">Sign Up</button>
+        <div class="fluid-container">
+          <button class="sign-up" onclick="openModal()">Sign Up</button>
+        </div>        
 
         <!-- The modal -->
         <div id="signUp">        
@@ -62,7 +65,7 @@
           </form>
        </div>
     </div>
-    
+
     <script>
       const openModal = () => {
         document.getElementById('signUp').style.display='block';
