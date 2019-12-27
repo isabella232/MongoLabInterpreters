@@ -15,7 +15,6 @@ router.post('/iProfile', async (req, res)=>{
     }
 })
 
-
 // interpreters can update their own profiles
 router.patch('/iProfile/:id',  async (req, res) =>{
     const updates = Object.keys(req.body)
