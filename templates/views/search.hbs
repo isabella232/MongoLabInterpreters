@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CDN -->    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Alice:400">
-    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/home.css">    
   </head>
   <body>
     {{>nav}}
-    <div class="sections">
+    <div class="section-margin">
       <h1>{{title}}</h1>
     </div>
-    <form class="sections">
-      <input class = "placeholder-box" placeholder="This is placeholder">
-      <select class = "qualifications">
+
+    <form class="section-margin">
+      <input class="placeholder-box" placeholder="This is placeholder">
+      <select class="qualifications">
         <option> Language </option>
         <option> Option 1 </option>        
         <option> Option 2 </option>
         <option> Option 3 </option>
         <option> Option 4 </option>
       </select>
-      <select class = "qualifications">
+      <select class="qualifications">
         <option> Location </option>
         <option> Option 1 </option>        
         <option> Option 2 </option>
         <option> Option 3 </option>
         <option> Option 4 </option>
       </select>
-      <select class = "qualifications">
+      <select class="qualifications">
         <option> Service </option>
         <option> Option 1 </option>        
         <option> Option 2 </option>
@@ -34,14 +44,14 @@
         <option> Option 4 </option>
 
       </select>
-      <select class = "qualifications">
+      <select class="qualifications">
         <option> Rating </option>
         <option> Option 1 </option>        
         <option> Option 2 </option>
         <option> Option 3 </option>
         <option> Option 4 </option>
       </select>
-       <select class = "qualifications">
+       <select class="qualifications">
         <option> Certification </option>
         <option> Option 1 </option>
         <option> Option 2 </option>
@@ -49,9 +59,9 @@
         <option> Option 4 </option>
       </select>
     </form>
-    <button class ="search-button"> Submit </button>
+    <button class="search-button"> Submit </button>
     
-    <h3 id = "search-prompt"> Search for an Interpretor By Category! </h3>
+    <h3 id="search-prompt"> Search for an Interpretor By Category! </h3>
  
   </body>
 </html>
