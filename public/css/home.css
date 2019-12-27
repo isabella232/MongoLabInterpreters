@@ -5,15 +5,28 @@
 }
 
 html {
-  overflow-y: scroll;
+  
 }
 
 body {
   font-family: 'Gill Sans', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
   padding: 35px;
+}
+
+.navbar {  
+  margin: -35px;
+  width: 100% + 70px;  
+  padding: 0.4em;
+  margin-bottom: 20px;
+} 
+
+.navbar-nav li {
+  font-size: 16px;
+  padding: 0em 0.1em;
+}
+
+.section-margin {
+  margin-bottom: 30px;
 }
 
 h1, h2, h3, a {
@@ -43,66 +56,12 @@ h3 {
   text-align: center;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  margin-bottom: 3%;
-}
-
-nav img {
-  flex-grow: 1;
-}
-
-nav ul {
-  align-self: flex-end;
-  flex-grow: 2;
-  list-style-type: none;
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: row;
-}
-
-li a {  
-  font-size: 18px;
-  color: #505050;
-  text-align: center;
-  text-decoration: none;
-  margin-left: 15px;
-}
-
-li a:hover:not(.active) {
-  color: black;
-  border-bottom: 2px solid #a1a1a1;
-}
-
-.active {
-  background-color: skyblue;
-}
-
-.sections {
-  margin-bottom: 30px;
-}
-
-#return-home {
-  text-align: center;
-}
-
 .rectangle {
   width: 90%;
   height: 500px;
   border: solid 1px var(--brown-grey);
-  background-color: gray;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.qualifications {
-  width: 150px;
-  height: 56px;
-  color: #000;
-  border-radius: 10px;
-  padding: 20px;
+  background-color: gray;  
+  margin: 0% 5% 5% 5%;
 }
 
 .placeholder-box {
@@ -115,21 +74,19 @@ li a:hover:not(.active) {
   padding-left: 10px;
 }
 
-input[type=input]:focus {
-  border: 2px solid #505050;
-  border-radius: 10px;
+.title-404 {
+  font-size: 40px;
 }
 
-/* Login Page CSS */
+/* Login Page CSS needs to be redone with Bootstrap */
 #signUp {  
   display: none;  
-  position: fixed;
+  position: fixed;  
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #555;
-  padding-top: 50px;
+  background-color: #555;  
 }
 
 .signup-content {
@@ -167,4 +124,24 @@ input[type=input]:focus {
 .close:focus {
   color: #f44336;
   cursor: pointer;
+}
+
+/* Fix with Bootstrap */
+
+.qualifications {
+  width: 150px;
+  height: 56px;
+  color: #000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+input[type=input]:focus {
+  border: 2px solid #505050;
+  border-radius: 10px;
+}
+
+/* This is not in use but useful..? */
+.active {
+  background-color: skyblue;
 }
