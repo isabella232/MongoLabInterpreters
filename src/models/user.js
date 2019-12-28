@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const InterpreterProfile = require('./interpreterProfile')
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -13,10 +15,11 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true,
         trim: true,
-    validate(value) {
-        if (!validator.isEmail(value)) {
-            throw new Error('Email is invalid')
-        }}
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error('Email is invalid')
+            }
+        }
     }, password: {
         type: String,
         required: true,
@@ -38,9 +41,21 @@ const userSchema = new mongoose.Schema({
     }, isAdmin: {
         type: Boolean,
         required: true
-    }
+    }, 
+    tokens:[{
+        token:{
+            type: String,
+            required: true
+        }
+    }]
     //add profile pic
     //idk how this would stored
+})
+
+userSchema.virtual('iProfile', {
+    ref: 'InterpreterProfile',
+    localField: '_id',
+    foreignField: 'owner'
 })
 
 //checks that the user exists in database
@@ -58,6 +73,28 @@ userSchema.statics.findByCredentials = async(email, password) =>{
     }
 
     return user
+}
+
+//generates the auth token
+userSchema.methods.generateAuthToken = async function() {
+    const user = this
+    const token = jwt.sign({_id: user.id.toString() }, 'thisismynewcourse')
+
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
+
+//doesn't print password or tokens
+userSchema.methods.toJSON = function(){
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
 }
 
 //has the plain text pw before saving

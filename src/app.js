@@ -29,6 +29,9 @@ hbs.registerPartials(partialsDirectoryPath)
 
 app.use(express.static(publicDirectoryPath))
 
+// Resource Creation
+app.use(express.json())
+
 // Request for home.html
 app.get('/home', (req, res) => {
     res.render('home', {
@@ -57,10 +60,7 @@ app.get('/login', (req, res) => {
     })
 })
 
-// Resource Creation
-app.use(express.json())
-
-app.post('/signup', (req, res) => {
+/* app.post('/signup', (req, res) => {
 	const user = new User(req.body)
     
     // Make sure mongoose is setup correctly
@@ -69,7 +69,7 @@ app.post('/signup', (req, res) => {
 	}).catch((e) => {
 		res.status(400).send(e)
 	})
-})
+}) */
 
 // Webinar page
 app.get('/webinar', (req, res) => {

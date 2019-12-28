@@ -1,11 +1,15 @@
 const express = require('express')
 const InterpreterProfile = require('../models/interpreterProfile')
+const auth = require('../middleware/auth')
 const router = new express.Router()
 
 // creating a profile
 // idk on what screen this will live
 router.post('/iProfile', async (req, res)=>{
-    const iProfile = new InterpreterProfile (req.body)
+    const iProfile = new InterpreterProfile ({
+        ...req.body,
+        owner: req.user._id
+    })
 
     try{
         await iProfile.save()
@@ -16,7 +20,7 @@ router.post('/iProfile', async (req, res)=>{
 })
 
 // interpreters can update their own profiles
-router.patch('/iProfile/:id',  async (req, res) =>{
+router.patch('/iProfile/me',  auth, async (req, res) =>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ['location', 'iLangFluency', 'eLangFluency', 'certification']
     const isValidOperation = updates.every((update)=> allowedUpdates.includes(update))
@@ -27,7 +31,7 @@ router.patch('/iProfile/:id',  async (req, res) =>{
 
     try{
         // from being logged in
-        const profile = await InterpreterProfile.findById(req.params.id)
+        const profile = await InterpreterProfile.findOne({owner: req.user._id})
 
         updates.forEach((update) => profile[update] = req.body[update])
 
